@@ -57,7 +57,7 @@ def main():
 
     if upstream_hash in local_hashes:
         return 0
-    print("::error " + WARNING_MSG_1.format(upstream=upstream_hash))
+    print("::error:: " + WARNING_MSG_1.format(upstream=upstream_hash))
     return 1
 
 
