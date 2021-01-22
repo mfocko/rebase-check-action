@@ -1,4 +1,4 @@
 #!/bin/bash
 
-cd $2;
-/check-rebase.py $1
+cd $GITHUB_WORKSPACE;
+/check-rebase.py "https://github.com/$GITHUB_REPOSITORY.git"

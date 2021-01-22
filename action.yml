@@ -1,15 +1,5 @@
 name: Rebase check
 description: Checks if rebase is needed
-inputs:
-  repo-url:
-    description: Upstream repo URL
-    required: true
-  workspace:
-    description: Workspace path
-    required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  args:
-    - ${{ inputs.repo-url }}
-    - ${{ inputs.workspace }}

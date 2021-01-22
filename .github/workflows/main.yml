@@ -3,13 +3,10 @@ on: [push]
 jobs:
   rebase_check:
     runs-on: ubuntu-latest
-    name: Checks rebase
+    name: 
     steps:
-    - name: Checkout
+    - name: Checkout repository
       uses: actions/checkout@v2
-    - name: Rebase check
+    - name: Check if rebase is needed
       id: rebase
       uses: mfocko/rebase-check-action@main
-      with:
-          repo-url: https://github.com/mfocko/rebase-check-action.git
-          workspace: ${{ github.workspace }}
