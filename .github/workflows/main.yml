@@ -1,0 +1,12 @@
+on: [push]
+
+jobs:
+  rebase_check:
+    runs-on: ubuntu-latest
+    name: Checks rebase
+    steps:
+    - name: Rebase check
+      id: rebase
+      uses: mfocko/rebase-check-action@main
+      with:
+        repo-url: https://github.com/mfocko/rebase-check-action.git
