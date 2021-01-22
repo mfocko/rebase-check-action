@@ -15,6 +15,10 @@ WARNING_MSG_2 = (
 )
 
 
+def wrap_in_group(group_name, text):
+    return f"::group::{group_name}\n{text}\n::endgroup::\n"
+
+
 def main():
     path = str(Path.cwd().absolute())
 
@@ -24,7 +28,7 @@ def main():
         stderr=subprocess.PIPE,
         cwd=path,
     ).stdout.decode()
-    print(f"::group::Last commit subject\n{last_commit_subject.strip()}\n::endgroup::")
+    print(wrap_in_group("Last commit subject", last_commit_subject.strip()))
 
     if "Merge commit" in last_commit_subject:
         print("::error " + WARNING_MSG_2)
@@ -52,8 +56,8 @@ def main():
         .split()[0]
     )
 
-    print(f"::group::Upstream hash\n{upstream_hash}\n::endgroup::")
-    print(f"::group::Local hashes\n{local_hashes[:3]}\n::endgroup::")
+    print(wrap_in_group("Upstream hash", upstream_hash))
+    print(wrap_in_group("Local hashes", local_hashes[:3]))
 
     if upstream_hash in local_hashes:
         return 0
