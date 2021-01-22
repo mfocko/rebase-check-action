@@ -24,7 +24,7 @@ def main():
         stderr=subprocess.PIPE,
         cwd=path,
     ).stdout.decode()
-    print(f"::group::Last commit subject\n{last_commit_subject}\n::endgroup::")
+    print(f"::group::Last commit subject\n{last_commit_subject.strip()}\n::endgroup::")
 
     if "Merge commit" in last_commit_subject:
         print("::error " + WARNING_MSG_2)
