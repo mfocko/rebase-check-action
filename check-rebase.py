@@ -4,13 +4,13 @@ import subprocess
 import sys
 
 WARNING_MSG_1 = (
-    "Your branch is not up to date with upstream/master. "
-    "SHA of the last commit of upstream/master: {upstream} "
+    "Your branch is not up to date with upstream's main branch. "
+    "SHA of the last commit on main branch: {upstream} "
     "Please, rebase!"
 )
 
 WARNING_MSG_2 = (
-    "Zuul merged the master, which means your branch is not up to date with upstream/master. "
+    "Zuul merged the main branch, which means your branch is not up to date with the main branch. "
     "Please, rebase!"
 )
 
