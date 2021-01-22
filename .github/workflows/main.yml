@@ -9,4 +9,4 @@ jobs:
       uses: actions/checkout@v2
     - name: Check if rebase is needed
       id: rebase
-      uses: mfocko/rebase-check-action@main
+      uses: mfocko/rebase-check-action@try-alpine
