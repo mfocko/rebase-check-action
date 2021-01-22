@@ -3,10 +3,12 @@ on: [push]
 jobs:
   rebase_check:
     runs-on: ubuntu-latest
-    name: 
+    name: Rebase check
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
+      with:
+        fetch-depth: 100
     - name: Check if rebase is needed
       id: rebase
       uses: mfocko/rebase-check-action@try-alpine

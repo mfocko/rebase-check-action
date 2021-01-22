@@ -4,14 +4,14 @@ import subprocess
 import sys
 
 WARNING_MSG_1 = (
-    "Your branch is not up to date with upstream/master. \n"
-    "SHA of the last commit of upstream/master: {upstream}\n"
-    "Please, rebase! \n"
+    "Your branch is not up to date with upstream/master. "
+    "SHA of the last commit of upstream/master: {upstream} "
+    "Please, rebase!"
 )
 
 WARNING_MSG_2 = (
-    "Zuul merged the master, which means your branch is not up to date with upstream/master.\n"
-    "Please, rebase! \n"
+    "Zuul merged the master, which means your branch is not up to date with upstream/master. "
+    "Please, rebase!"
 )
 
 
@@ -24,10 +24,10 @@ def main():
         stderr=subprocess.PIPE,
         cwd=path,
     ).stdout.decode()
-    print(f"Last commit subject: {last_commit_subject}")
+    print(f"::group::Last commit subject\n{last_commit_subject}\n::endgroup::")
 
     if "Merge commit" in last_commit_subject:
-        print(WARNING_MSG_2)
+        print("::error " + WARNING_MSG_2)
         return 2
 
     local_hashes = (
@@ -52,11 +52,12 @@ def main():
         .split()[0]
     )
 
-    print(f"Upstream hash: {upstream_hash}\n" f"Local hashes: {local_hashes[:3]}\n")
+    print(f"::group::Upstream hash\n{upstream_hash}\n::endgroup::")
+    print(f"::group::Local hashes\n{local_hashes[:3]}\n::endgroup::")
 
     if upstream_hash in local_hashes:
         return 0
-    print(WARNING_MSG_1.format(upstream=upstream_hash))
+    print("::error " + WARNING_MSG_1.format(upstream=upstream_hash))
     return 1
 
 
