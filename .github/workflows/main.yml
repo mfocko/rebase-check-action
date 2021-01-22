@@ -11,4 +11,4 @@ jobs:
         fetch-depth: 100
     - name: Check if rebase is needed
       id: rebase
-      uses: mfocko/rebase-check-action@try-alpine
+      uses: mfocko/rebase-check-action@main
